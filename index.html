@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Die Besties</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #add8ff, #e0b3ff);
+      font-family: 'Arial', sans-serif;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #4b0082;
+      margin-bottom: 30px;
+    }
+
+    button {
+      background-color: #9370db;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      color: white;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: #7a5fc4;
+      transform: scale(1.05);
+    }
+
+    #count {
+      margin-top: 15px;
+      font-size: 1.5rem;
+      color: #4b0082;
+    }
+  </style>
+</head>
+<body>
+  <h1>Die Besties</h1>
+    <button onclick="like()">❤️ Like</button>
+  <div id="count">0 lieben es</div>
+
+  <script>
+    // Likes aus dem LocalStorage laden oder 0 setzen
+    let likes = localStorage.getItem("bestiesLikes") 
+                ? parseInt(localStorage.getItem("bestiesLikes")) 
+                : 0;
+
+    // Anzeige aktualisieren
+    document.getElementById("count").innerText = likes + " lieben es";
+
+    function like() {
+      likes++;
+      document.getElementById("count").innerText = likes + " lieben es";
+      localStorage.setItem("bestiesLikes", likes);
+    }
+  </script>
+</body>
+</html>
